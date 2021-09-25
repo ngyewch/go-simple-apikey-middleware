@@ -7,8 +7,8 @@ github.com/go-eden/common v0.1.14 h1:QiSxZLFQDXE2F7LX+ZnaiTs15t0n3lfZo5PanIJiv60
 github.com/go-eden/common v0.1.14/go.mod h1:vcNs8vhRl9/YFxtkgUPbAhTUSt40NcK7bF8d3S3n5sU=
 github.com/go-eden/routine v0.0.1 h1:EFzGtHcxmv2gAcdoG7vMESe+26nuIl0/vTMtc030m/4=
 github.com/go-eden/routine v0.0.1/go.mod h1:R+sklWRKa0GPYXW5Opyr1nSb9KbwpEF9AXBARb7r1XI=
-github.com/go-eden/slf4go v1.1.0 h1:35zmZxjJYaj6C8J9TwNEvaoBdEgKSCdQSLrruRdbywM=
-github.com/go-eden/slf4go v1.1.0/go.mod h1:mnVsjQFGLXKKWN6Mb9GREeZ2DOwwmLrb4PsLfTAdkTM=
+github.com/go-eden/slf4go v1.1.1 h1:qez94lqrwc1quxlsLvD9IhH+QM7p/CcAacCiZl9Dooo=
+github.com/go-eden/slf4go v1.1.1/go.mod h1:mnVsjQFGLXKKWN6Mb9GREeZ2DOwwmLrb4PsLfTAdkTM=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
