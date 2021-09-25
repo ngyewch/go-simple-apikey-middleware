@@ -46,7 +46,7 @@ func (middleware *Middleware) Middleware(next http.Handler) http.Handler {
 
 		apiKeyDetails, exists, err := middleware.apiKeyDetailsService.GetApiKeyDetails(apiKey)
 		if err != nil {
-			logger.Fatalf("%v", err)
+			logger.Errorf("%v", err)
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
