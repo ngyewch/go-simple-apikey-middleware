@@ -2,7 +2,7 @@ package go_simple_apikey_middleware
 
 import (
 	"github.com/bmatcuk/doublestar/v4"
-	slog "github.com/go-eden/slf4go"
+	"log/slog"
 	"net/http"
 )
 
@@ -13,14 +13,6 @@ type Middleware struct {
 
 type PathConfig struct {
 	IncludedPatterns []string
-}
-
-var (
-	logger slog.Logger
-)
-
-func init() {
-	logger = slog.GetLogger()
 }
 
 func NewMiddleware(apiKeyDetailsService ApiKeyDetailsService, pathConfig PathConfig) *Middleware {
@@ -46,7 +38,9 @@ func (middleware *Middleware) Middleware(next http.Handler) http.Handler {
 
 		apiKeyDetails, exists, err := middleware.apiKeyDetailsService.GetApiKeyDetails(apiKey)
 		if err != nil {
-			logger.Errorf("%v", err)
+			slog.Error("internal server error",
+				slog.Any("err", err),
+			)
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
@@ -55,17 +49,23 @@ func (middleware *Middleware) Middleware(next http.Handler) http.Handler {
 			return
 		}
 		if apiKeyDetails.ApiKeyDisabled {
-			logger.Warnf("API key issued to '%s' disabled", apiKeyDetails.IssuedTo)
+			slog.Warn("API key disabled",
+				slog.String("issuedTo", apiKeyDetails.IssuedTo),
+			)
 			http.Error(w, "Unauthorized", http.StatusUnauthorized)
 			return
 		}
 		if apiKeyDetails.ApiKeyExpired {
-			logger.Warnf("API key issued to '%s' expired", apiKeyDetails.IssuedTo)
+			slog.Warn("API key expired",
+				slog.String("issuedTo", apiKeyDetails.IssuedTo),
+			)
 			http.Error(w, "Unauthorized", http.StatusUnauthorized)
 			return
 		}
 		if apiKeyDetails.ApiKeyLocked {
-			logger.Warnf("API key issued to '%s' locked", apiKeyDetails.IssuedTo)
+			slog.Warn("API key locked",
+				slog.String("issuedTo", apiKeyDetails.IssuedTo),
+			)
 			http.Error(w, "Unauthorized", http.StatusUnauthorized)
 			return
 		}
